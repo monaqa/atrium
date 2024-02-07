@@ -8,7 +8,8 @@ pub enum BlobRef {
 #[derive(serde::Serialize, serde::Deserialize, Debug, Clone, PartialEq, Eq)]
 #[serde(rename_all = "camelCase")]
 pub struct Blob {
-    r#ref: CID,
+    #[serde(with = "serde_bytes")]
+    r#ref: Vec<u8>, // TODO
     mime_type: String,
     size: usize, // TODO
 }
